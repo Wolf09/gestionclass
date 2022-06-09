@@ -1,0 +1,331 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="PROYECTOS" pageWidth="1008" pageHeight="612" orientation="Landscape" columnWidth="924" leftMargin="42" rightMargin="42" topMargin="42" bottomMargin="42" uuid="ee24f89a-3299-4475-bc00-5c34847ddc76">
+	<property name="ireport.zoom" value="1.4615378250000008"/>
+	<property name="ireport.x" value="625"/>
+	<property name="ireport.y" value="0"/>
+	<style name="COLUMNA_NORMAL" fontName="Times New Roman" fontSize="11" isBold="false" isItalic="false" isUnderline="false" isStrikeThrough="false"/>
+	<parameter name="ges" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="nom" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<queryString>
+		<![CDATA[SELECT responsable.gestion,proyecto.proyecto,proyecto.mpt,proyecto.mst,proyecto.mtt,proyecto.ef,
+proyecto.fechai,proyecto.fechaf,proyecto.cump,proyecto.monto,proyecto.cumpentiempo,proyecto.continua,
+proyecto.recomendacion,responsable.apellidos,responsable.nombres,responsable.nominacion 
+FROM responsable,proyecto 
+WHERE responsable.cod=proyecto.cod 
+AND responsable.gestion=proyecto.gestion 
+AND responsable.nominacion=proyecto.nominacion 
+AND proyecto.gestion= $P{ges}
+AND proyecto.nominacion=$P{nom}
+ORDER BY responsable.apellidos, responsable.nombres]]>
+	</queryString>
+	<field name="gestion" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="proyecto" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="mpt" class="java.math.BigDecimal">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="mst" class="java.math.BigDecimal">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="mtt" class="java.math.BigDecimal">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="ef" class="java.math.BigDecimal">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="fechai" class="java.sql.Date">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="fechaf" class="java.sql.Date">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="cump" class="java.math.BigDecimal">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="monto" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="cumpentiempo" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="continua" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="recomendacion" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="apellidos" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="nombres" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="nominacion" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<variable name="NOMBRE_COMPLETO RESPONSABLE" class="java.lang.String">
+		<variableExpression><![CDATA[$F{apellidos}+" "+$F{nombres}]]></variableExpression>
+	</variable>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="82" splitType="Stretch">
+			<staticText>
+				<reportElement x="50" y="0" width="812" height="26" forecolor="#002E6E" uuid="3264bc71-47c3-4f07-bb3d-0b7f67e1b01c"/>
+				<textElement textAlignment="Center">
+					<font fontName="Times New Roman" size="22" isBold="true"/>
+				</textElement>
+				<text><![CDATA[CENTRO DE LEVANTAMIENTOS AEROESPACIALES Y APLICACIONES]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="50" y="26" width="812" height="26" forecolor="#002E6E" backcolor="#FFFFFF" uuid="0fecdfd6-0d4a-4ed9-8a4f-3bef4ab18189"/>
+				<textElement textAlignment="Center">
+					<font fontName="Times New Roman" size="18" isBold="true"/>
+				</textElement>
+				<text><![CDATA[SIG PARA EL DESARROLLO SOSTENIBLE DE LOS RECURSOS NATURALES]]></text>
+			</staticText>
+			<image>
+				<reportElement x="0" y="2" width="50" height="50" uuid="c6bcaac3-b5ca-497b-ad1a-dbcb669b742b"/>
+				<imageExpression><![CDATA["Logo_Clas1.jpg"]]></imageExpression>
+			</image>
+			<staticText>
+				<reportElement x="206" y="54" width="510" height="26" forecolor="#002E6E" uuid="2aa501dd-3b40-4f14-b696-85d6f60b2d97"/>
+				<textElement textAlignment="Center">
+					<font fontName="Times New Roman" size="22" isBold="true"/>
+				</textElement>
+				<text><![CDATA[UNIDAD DE PROYECTOS]]></text>
+			</staticText>
+			<textField>
+				<reportElement style="COLUMNA_NORMAL" x="0" y="54" width="206" height="20" uuid="a1855e1e-a05e-475b-8cfb-dfa6f28db7e9"/>
+				<textElement verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Gestión:  "+$F{gestion}]]></textFieldExpression>
+			</textField>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="10" splitType="Stretch">
+			<rectangle radius="1">
+				<reportElement x="0" y="0" width="924" height="5" backcolor="#002E6E" uuid="1026705f-fcb0-4d77-aa3e-b88645594345"/>
+				<graphicElement>
+					<pen lineWidth="0.0"/>
+				</graphicElement>
+			</rectangle>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band height="34" splitType="Stretch">
+			<rectangle>
+				<reportElement x="0" y="2" width="922" height="30" backcolor="#91C980" uuid="01cbd4b4-24b3-48de-9c87-a9b794a986ee"/>
+			</rectangle>
+			<staticText>
+				<reportElement style="COLUMNA_NORMAL" x="5" y="1" width="152" height="30" uuid="cdf72d0a-cd30-49ce-89fd-9f5ea819c60e"/>
+				<textElement verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[PROYECTO]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="COLUMNA_NORMAL" x="145" y="-1" width="40" height="30" uuid="c8281c63-88d6-4c40-b4f5-1c5d96d740d1"/>
+				<textElement verticalAlignment="Middle">
+					<font size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[PRIMERA ENTREGA]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="COLUMNA_NORMAL" x="436" y="2" width="38" height="30" uuid="f3dc5321-4fb1-42a6-8dd2-05a3e701eb90"/>
+				<textElement verticalAlignment="Middle">
+					<font size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[% DE CUMPLIMIENTO]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="COLUMNA_NORMAL" x="306" y="0" width="59" height="30" uuid="263d6f24-45d7-4f50-a5ac-a7a25187f875"/>
+				<textElement verticalAlignment="Middle">
+					<font size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[FECHA DE INÍCIO]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="COLUMNA_NORMAL" x="371" y="3" width="46" height="30" uuid="ff747b2b-f8b3-4342-b08f-8c5d98baf759"/>
+				<textElement verticalAlignment="Middle">
+					<font size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[FECHA FINAL]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="COLUMNA_NORMAL" x="186" y="4" width="40" height="30" uuid="16217e82-fead-4d35-8039-8fdad0ae5eab"/>
+				<textElement verticalAlignment="Middle">
+					<font size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[SEGUNDA ENTREGA]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="COLUMNA_NORMAL" x="226" y="0" width="40" height="30" uuid="844dae20-03fe-48b4-8e10-bdad3fbdc7d0"/>
+				<textElement verticalAlignment="Middle">
+					<font size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[TERCERA ENTREGA]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="COLUMNA_NORMAL" x="266" y="3" width="40" height="30" uuid="73c6caaf-a2cb-4b04-886a-b2f0da7dd2eb"/>
+				<textElement verticalAlignment="Middle">
+					<font size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[ENTREGA FINAL]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="COLUMNA_NORMAL" x="474" y="1" width="45" height="30" uuid="8dacf310-d3fd-49e8-81f1-1733e27ada16"/>
+				<textElement verticalAlignment="Middle">
+					<font size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[MONTO]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="COLUMNA_NORMAL" x="583" y="6" width="53" height="24" uuid="153d6b34-b6f6-492a-8720-3ebf89f35d32"/>
+				<textElement verticalAlignment="Middle">
+					<font size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[CONTNÚA DE GESTIÓN]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="COLUMNA_NORMAL" x="637" y="3" width="100" height="30" uuid="e8c05a2f-65cf-4d3a-b963-cf960ee4150f"/>
+				<textElement verticalAlignment="Middle">
+					<font size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[RECOMENDACIONES]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="COLUMNA_NORMAL" x="737" y="3" width="63" height="30" uuid="0d71d447-41e8-447b-9c70-35e46eb86039"/>
+				<textElement verticalAlignment="Middle">
+					<font size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[RESPONSABLE]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="COLUMNA_NORMAL" x="837" y="3" width="63" height="30" uuid="bd0524a9-c436-470f-ab7e-69b7fd2c7f19"/>
+				<textElement verticalAlignment="Middle">
+					<font size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[NOMINACIÓN]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="COLUMNA_NORMAL" x="536" y="1" width="47" height="27" uuid="5aa7843b-381a-4c5f-be38-5490053e8fbc"/>
+				<textElement verticalAlignment="Middle">
+					<font size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[CUMPLIDO EN TIEMPO]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="22" splitType="Stretch">
+			<rectangle>
+				<reportElement style="COLUMNA_NORMAL" x="0" y="1" width="924" height="20" backcolor="#DEDADA" uuid="5d27d6a7-9316-4e52-b646-da43dbf19fb5">
+					<printWhenExpression><![CDATA[new Boolean($V{REPORT_COUNT}.intValue() % 2 == 0)]]></printWhenExpression>
+				</reportElement>
+			</rectangle>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement style="COLUMNA_NORMAL" x="5" y="2" width="140" height="20" uuid="dc503a61-3e61-4afd-a058-d59e433d71a4"/>
+				<textElement verticalAlignment="Top"/>
+				<textFieldExpression><![CDATA[$F{proyecto}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement style="COLUMNA_NORMAL" x="146" y="2" width="40" height="20" uuid="3b21b33a-e04f-4a3a-8a42-efa1f7c2262a"/>
+				<textElement verticalAlignment="Top"/>
+				<textFieldExpression><![CDATA[$F{mpt}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement style="COLUMNA_NORMAL" x="186" y="2" width="40" height="20" uuid="81688372-1c9f-4eb7-ae6b-8ba5683357ca"/>
+				<textElement verticalAlignment="Top"/>
+				<textFieldExpression><![CDATA[$F{mst}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement style="COLUMNA_NORMAL" x="226" y="2" width="40" height="20" uuid="84817ce7-d12f-4e0c-b9fb-cb4df4bc590b"/>
+				<textElement verticalAlignment="Top"/>
+				<textFieldExpression><![CDATA[$F{mtt}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement style="COLUMNA_NORMAL" x="266" y="2" width="40" height="20" uuid="9206af0e-9951-4e27-9391-a8cba71261bf"/>
+				<textElement verticalAlignment="Top"/>
+				<textFieldExpression><![CDATA[$F{ef}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true" pattern="dd-MM-yyyy" isBlankWhenNull="true">
+				<reportElement style="COLUMNA_NORMAL" x="306" y="2" width="65" height="20" uuid="e6129796-5190-4c4e-9e5a-128655ec230d"/>
+				<textElement verticalAlignment="Top"/>
+				<textFieldExpression><![CDATA[$F{fechai}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement style="COLUMNA_NORMAL" x="437" y="2" width="37" height="20" uuid="86a55f76-39fa-4986-9d8d-733dee4ead13"/>
+				<textElement verticalAlignment="Top"/>
+				<textFieldExpression><![CDATA[$F{cump}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement style="COLUMNA_NORMAL" x="474" y="2" width="65" height="20" uuid="3984c675-720a-4446-b0b7-e5216ca57e6a"/>
+				<textElement verticalAlignment="Top"/>
+				<textFieldExpression><![CDATA[$F{monto}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement style="COLUMNA_NORMAL" x="583" y="2" width="54" height="20" uuid="a3aa8739-8f26-492f-972f-b2563bc0eed7"/>
+				<textElement verticalAlignment="Top"/>
+				<textFieldExpression><![CDATA[$F{continua}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement style="COLUMNA_NORMAL" x="637" y="2" width="100" height="20" uuid="3e531a07-7171-4f3e-9d22-371d8b535434"/>
+				<textElement verticalAlignment="Top"/>
+				<textFieldExpression><![CDATA[$F{recomendacion}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement style="COLUMNA_NORMAL" x="737" y="2" width="100" height="20" uuid="1ee8606a-91d0-432e-925f-29f79d212fce"/>
+				<textElement verticalAlignment="Top"/>
+				<textFieldExpression><![CDATA[$V{NOMBRE_COMPLETO RESPONSABLE}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement x="837" y="2" width="85" height="20" uuid="27e67772-6217-4e48-9879-b915dcaa11b5"/>
+				<textElement verticalAlignment="Top"/>
+				<textFieldExpression><![CDATA[$F{nominacion}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true" pattern="dd-MM-yyyy" isBlankWhenNull="true">
+				<reportElement style="COLUMNA_NORMAL" x="371" y="2" width="65" height="20" uuid="222c6be2-8e64-4360-b761-93201fe3ff1c"/>
+				<textElement verticalAlignment="Top"/>
+				<textFieldExpression><![CDATA[$F{fechaf}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement style="COLUMNA_NORMAL" x="538" y="2" width="44" height="20" uuid="04df4fb3-f73c-41dc-845e-7b562108de76"/>
+				<textElement verticalAlignment="Top"/>
+				<textFieldExpression><![CDATA[$F{cumpentiempo}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="6" splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="20" splitType="Stretch">
+			<textField pattern="dd/MM/yyyy">
+				<reportElement style="COLUMNA_NORMAL" x="0" y="0" width="138" height="20" uuid="1956ab33-84e1-46a6-acac-b38bcfb283f1"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="COLUMNA_NORMAL" x="775" y="0" width="149" height="20" uuid="adfd9fa6-7145-454e-8dcc-0c3bae317162"/>
+				<textElement textAlignment="Right"/>
+				<textFieldExpression><![CDATA["Página Nº:"+$V{PAGE_NUMBER}+" de "+$V{PAGE_COUNT}]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageFooter>
+	<summary>
+		<band height="8" splitType="Stretch"/>
+	</summary>
+</jasperReport>

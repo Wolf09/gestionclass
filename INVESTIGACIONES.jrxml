@@ -1,0 +1,258 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="INVESTIGACIONES" pageWidth="1008" pageHeight="612" orientation="Landscape" columnWidth="924" leftMargin="42" rightMargin="42" topMargin="42" bottomMargin="42" uuid="ee24f89a-3299-4475-bc00-5c34847ddc76">
+	<property name="ireport.zoom" value="1.4641000000000006"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<style name="COLUMNA_NORMAL" fontName="Times New Roman" fontSize="11" isBold="false" isItalic="false" isUnderline="false" isStrikeThrough="false"/>
+	<parameter name="ges" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<queryString>
+		<![CDATA[SELECT investigador.gestion,investigador.grado,investigador.apellidos,investigador.nombres,
+investigador.area,investigacion.invact,investigacion.fechai,investigacion.fechaf,investigacion.pp,
+investigacion.sp,investigacion.pf,investigacion.cump 
+FROM investigacion,investigador 
+WHERE investigacion.cod=investigador.cod 
+AND investigacion.gestion=investigador.gestion 
+AND investigacion.area=investigador.area 
+AND investigacion.gestion=$P{ges} 
+ORDER BY investigador.apellidos, investigador.nombres]]>
+	</queryString>
+	<field name="gestion" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="grado" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="apellidos" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="nombres" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="area" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="invact" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="fechai" class="java.sql.Date">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="fechaf" class="java.sql.Date">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="pp" class="java.math.BigDecimal">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="sp" class="java.math.BigDecimal">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="pf" class="java.math.BigDecimal">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="cump" class="java.math.BigDecimal">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<variable name="NOMBRE_COMPLETO" class="java.lang.String">
+		<variableExpression><![CDATA[$F{grado}+" "+$F{apellidos}+" "+$F{nombres}]]></variableExpression>
+	</variable>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="81" splitType="Stretch">
+			<staticText>
+				<reportElement x="50" y="0" width="830" height="26" forecolor="#002E6E" uuid="3264bc71-47c3-4f07-bb3d-0b7f67e1b01c"/>
+				<textElement textAlignment="Center">
+					<font fontName="Times New Roman" size="22" isBold="true"/>
+				</textElement>
+				<text><![CDATA[CENTRO DE LEVANTAMIENTOS AEROESPACIALES Y APLICACIONES]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="50" y="26" width="830" height="26" forecolor="#002E6E" backcolor="#FFFFFF" uuid="0fecdfd6-0d4a-4ed9-8a4f-3bef4ab18189"/>
+				<textElement textAlignment="Center">
+					<font fontName="Times New Roman" size="18" isBold="true"/>
+				</textElement>
+				<text><![CDATA[SIG PARA EL DESARROLLO SOSTENIBLE DE LOS RECURSOS NATURALES]]></text>
+			</staticText>
+			<image>
+				<reportElement x="0" y="3" width="50" height="50" uuid="c6bcaac3-b5ca-497b-ad1a-dbcb669b742b"/>
+				<imageExpression><![CDATA["Logo_Clas1.jpg"]]></imageExpression>
+			</image>
+			<staticText>
+				<reportElement x="306" y="54" width="265" height="26" forecolor="#002E6E" uuid="2aa501dd-3b40-4f14-b696-85d6f60b2d97"/>
+				<textElement textAlignment="Center">
+					<font fontName="Times New Roman" size="22" isBold="true"/>
+				</textElement>
+				<text><![CDATA[INVESTIGACIONES]]></text>
+			</staticText>
+			<textField>
+				<reportElement style="COLUMNA_NORMAL" x="6" y="54" width="206" height="20" uuid="a1855e1e-a05e-475b-8cfb-dfa6f28db7e9"/>
+				<textElement verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Gestión:  "+$F{gestion}]]></textFieldExpression>
+			</textField>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="7" splitType="Stretch">
+			<rectangle radius="1">
+				<reportElement x="0" y="0" width="924" height="5" backcolor="#002E6E" uuid="1026705f-fcb0-4d77-aa3e-b88645594345"/>
+				<graphicElement>
+					<pen lineWidth="0.0"/>
+				</graphicElement>
+			</rectangle>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band height="34" splitType="Stretch">
+			<rectangle>
+				<reportElement x="0" y="1" width="924" height="30" backcolor="#91C980" uuid="01cbd4b4-24b3-48de-9c87-a9b794a986ee"/>
+			</rectangle>
+			<staticText>
+				<reportElement style="COLUMNA_NORMAL" x="6" y="1" width="152" height="30" uuid="cdf72d0a-cd30-49ce-89fd-9f5ea819c60e"/>
+				<textElement verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[INVESTIGADOR]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="COLUMNA_NORMAL" x="167" y="1" width="175" height="30" uuid="c8281c63-88d6-4c40-b4f5-1c5d96d740d1"/>
+				<textElement verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[ÁREA]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="COLUMNA_NORMAL" x="344" y="1" width="170" height="30" uuid="feae948e-0c6c-423f-8ffe-a6bdb96dabd0"/>
+				<textElement verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[INVESTIGACIÓN ACTUAL]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="COLUMNA_NORMAL" x="581" y="3" width="48" height="30" uuid="75b61710-143f-4cbc-9280-29bb365a0f18"/>
+				<textElement verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[FECHA FIN]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="COLUMNA_NORMAL" x="707" y="1" width="66" height="30" uuid="83f173b4-1930-4417-a0c2-881bbb23d0b7"/>
+				<textElement verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[SEGUNDO PRODUCTO]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="COLUMNA_NORMAL" x="775" y="1" width="65" height="30" uuid="ff747b2b-f8b3-4342-b08f-8c5d98baf759"/>
+				<textElement verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[PRODUCTO FINAL]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="COLUMNA_NORMAL" x="847" y="1" width="75" height="30" uuid="f3dc5321-4fb1-42a6-8dd2-05a3e701eb90"/>
+				<textElement verticalAlignment="Middle">
+					<font size="9" isBold="true"/>
+				</textElement>
+				<text><![CDATA[% DE CUMPLIMIENTO]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="COLUMNA_NORMAL" x="520" y="2" width="61" height="30" uuid="326d99d8-626f-4b1d-afad-6c844103700e"/>
+				<textElement verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[FECHA INÍCIO]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="COLUMNA_NORMAL" x="639" y="1" width="66" height="30" uuid="53e7b92f-7263-4f78-90aa-9d26ed54e533"/>
+				<textElement verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[PRIMER PRODUCTO]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="22" splitType="Stretch">
+			<rectangle>
+				<reportElement style="COLUMNA_NORMAL" stretchType="RelativeToBandHeight" x="0" y="1" width="924" height="20" backcolor="#DEDADA" uuid="5d27d6a7-9316-4e52-b646-da43dbf19fb5">
+					<printWhenExpression><![CDATA[new Boolean($V{REPORT_COUNT}.intValue() % 2 == 0)]]></printWhenExpression>
+				</reportElement>
+				<graphicElement>
+					<pen lineWidth="0.0"/>
+				</graphicElement>
+			</rectangle>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement style="COLUMNA_NORMAL" x="6" y="1" width="158" height="20" uuid="80345a9a-c015-4e54-b731-9ec0555bbe1b"/>
+				<textElement verticalAlignment="Top"/>
+				<textFieldExpression><![CDATA[$V{NOMBRE_COMPLETO}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement style="COLUMNA_NORMAL" x="167" y="1" width="175" height="20" uuid="e30c5b77-ae24-43ea-bb34-f50c2d289ac8"/>
+				<textElement verticalAlignment="Top"/>
+				<textFieldExpression><![CDATA[$F{area}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement style="COLUMNA_NORMAL" x="344" y="1" width="170" height="20" uuid="9519838f-6619-44eb-a004-5a7a431c44aa"/>
+				<textElement verticalAlignment="Top"/>
+				<textFieldExpression><![CDATA[$F{invact}]]></textFieldExpression>
+			</textField>
+			<textField pattern="dd-MM-yy" isBlankWhenNull="true">
+				<reportElement style="COLUMNA_NORMAL" x="519" y="1" width="55" height="20" uuid="8e1f2d06-40b9-41cd-a001-adaef29885ec"/>
+				<textElement verticalAlignment="Top"/>
+				<textFieldExpression><![CDATA[$F{fechai}]]></textFieldExpression>
+			</textField>
+			<textField pattern="dd-MM-yy" isBlankWhenNull="true">
+				<reportElement style="COLUMNA_NORMAL" x="579" y="1" width="55" height="20" uuid="67498eda-0247-40e8-aa78-06f2563e8fbf"/>
+				<textElement verticalAlignment="Top"/>
+				<textFieldExpression><![CDATA[$F{fechaf}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement style="COLUMNA_NORMAL" x="638" y="1" width="65" height="20" uuid="f271af0f-b37d-4165-a44f-e52f3f1b6e6e"/>
+				<textElement verticalAlignment="Top"/>
+				<textFieldExpression><![CDATA[$F{pp}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement style="COLUMNA_NORMAL" x="706" y="1" width="65" height="20" uuid="c2021927-7b51-45c4-9315-dd2eb2c55aee"/>
+				<textElement verticalAlignment="Top"/>
+				<textFieldExpression><![CDATA[$F{sp}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement style="COLUMNA_NORMAL" x="776" y="1" width="65" height="20" uuid="991066bf-3033-4bc7-b9db-cbe1889e4139"/>
+				<textElement verticalAlignment="Top"/>
+				<textFieldExpression><![CDATA[$F{pf}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement style="COLUMNA_NORMAL" x="847" y="1" width="75" height="20" uuid="43971dfd-4051-4282-81c2-98f411967395"/>
+				<textElement verticalAlignment="Top"/>
+				<textFieldExpression><![CDATA[$F{cump}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="6" splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="22" splitType="Stretch">
+			<textField pattern="dd/MM/yyyy">
+				<reportElement style="COLUMNA_NORMAL" x="0" y="0" width="138" height="20" uuid="1956ab33-84e1-46a6-acac-b38bcfb283f1"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="COLUMNA_NORMAL" x="775" y="0" width="149" height="20" uuid="adfd9fa6-7145-454e-8dcc-0c3bae317162"/>
+				<textElement textAlignment="Right"/>
+				<textFieldExpression><![CDATA["Página Nº:"+$V{PAGE_NUMBER}+" de "+$V{PAGE_COUNT}]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageFooter>
+	<summary>
+		<band height="8" splitType="Stretch"/>
+	</summary>
+</jasperReport>

@@ -1,0 +1,219 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.3.1.final using JasperReports Library version 6.3.1  -->
+<!-- 2018-10-07T13:15:28 -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="CONTROL HORARIO ADMINISTRATIVO" pageWidth="1008" pageHeight="612" orientation="Landscape" columnWidth="924" leftMargin="42" rightMargin="42" topMargin="42" bottomMargin="42" uuid="ee24f89a-3299-4475-bc00-5c34847ddc76">
+	<property name="ireport.zoom" value="1.2100000000000006"/>
+	<property name="ireport.x" value="388"/>
+	<property name="ireport.y" value="0"/>
+	<style name="COLUMNA_NORMAL" fontName="Times New Roman" fontSize="11" isBold="false" isItalic="false" isUnderline="false" isStrikeThrough="false"/>
+	<parameter name="feci" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="fecf" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<queryString>
+		<![CDATA[SELECT apellidos,nombres,horaim,horasm,horait,horast,horain,horasn 
+FROM administrativo,horaadministrativo 
+WHERE administrativo.codadm=horaadministrativo.codadm
+AND llave>= $P{feci}
+AND llave<= $P{fecf}
+GROUP BY llave ORDER BY apellidos,llave]]>
+	</queryString>
+	<field name="apellidos" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="nombres" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="horaim" class="java.sql.Timestamp">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="horasm" class="java.sql.Timestamp">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="horait" class="java.sql.Timestamp">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="horast" class="java.sql.Timestamp">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="horain" class="java.sql.Timestamp">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="horasn" class="java.sql.Timestamp">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<variable name="nombre_completo" class="java.lang.String">
+		<variableExpression><![CDATA[$F{apellidos}+" "+$F{nombres}]]></variableExpression>
+		<initialValueExpression><![CDATA[]]></initialValueExpression>
+	</variable>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="80" splitType="Stretch">
+			<staticText>
+				<reportElement x="65" y="0" width="780" height="26" forecolor="#002E6E" uuid="3264bc71-47c3-4f07-bb3d-0b7f67e1b01c"/>
+				<textElement textAlignment="Center">
+					<font fontName="Times New Roman" size="22" isBold="true"/>
+				</textElement>
+				<text><![CDATA[CENTRO DE LEVANTAMIENTOS AEROESPACIALES Y APLICACIONES]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="65" y="27" width="780" height="26" forecolor="#002E6E" backcolor="#FFFFFF" uuid="0fecdfd6-0d4a-4ed9-8a4f-3bef4ab18189"/>
+				<textElement textAlignment="Center">
+					<font fontName="Times New Roman" size="18" isBold="true"/>
+				</textElement>
+				<text><![CDATA[SIG PARA EL DESARROLLO SOSTENIBLE DE LOS RECURSOS NATURALES]]></text>
+			</staticText>
+			<image>
+				<reportElement x="0" y="0" width="80" height="80" uuid="c6bcaac3-b5ca-497b-ad1a-dbcb669b742b"/>
+				<imageExpression><![CDATA["Logo_Clas1.jpg"]]></imageExpression>
+			</image>
+			<staticText>
+				<reportElement x="156" y="54" width="596" height="26" forecolor="#002E6E" uuid="2aa501dd-3b40-4f14-b696-85d6f60b2d97"/>
+				<textElement textAlignment="Center">
+					<font fontName="Times New Roman" size="22" isBold="true"/>
+				</textElement>
+				<text><![CDATA[CONTROL DE HORARIO ADMINISTRATIVOS]]></text>
+			</staticText>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="10" splitType="Stretch">
+			<rectangle radius="1">
+				<reportElement x="0" y="0" width="924" height="5" backcolor="#002E6E" uuid="1026705f-fcb0-4d77-aa3e-b88645594345"/>
+				<graphicElement>
+					<pen lineWidth="0.0"/>
+				</graphicElement>
+			</rectangle>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band height="26" splitType="Stretch">
+			<rectangle>
+				<reportElement x="0" y="0" width="924" height="25" backcolor="#91C980" uuid="01cbd4b4-24b3-48de-9c87-a9b794a986ee"/>
+			</rectangle>
+			<staticText>
+				<reportElement x="6" y="2" width="145" height="20" uuid="cdf72d0a-cd30-49ce-89fd-9f5ea819c60e"/>
+				<textElement verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[APELLIDOS]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="COLUMNA_NORMAL" x="137" y="1" width="99" height="20" uuid="c8281c63-88d6-4c40-b4f5-1c5d96d740d1"/>
+				<textElement verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[NOMBRES]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="COLUMNA_NORMAL" x="263" y="0" width="100" height="26" uuid="feae948e-0c6c-423f-8ffe-a6bdb96dabd0"/>
+				<textElement verticalAlignment="Middle">
+					<font size="9" isBold="true"/>
+				</textElement>
+				<text><![CDATA[HORA DE INGRESO MAÑANA]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="COLUMNA_NORMAL" x="374" y="1" width="100" height="25" uuid="75b61710-143f-4cbc-9280-29bb365a0f18"/>
+				<textElement verticalAlignment="Middle">
+					<font size="9" isBold="true"/>
+				</textElement>
+				<text><![CDATA[HORA DE SALIDA MAÑANA]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="COLUMNA_NORMAL" x="486" y="0" width="100" height="25" uuid="88907900-ade4-4629-82c6-50ab68d4e9fc"/>
+				<textElement verticalAlignment="Middle">
+					<font size="9" isBold="true"/>
+				</textElement>
+				<text><![CDATA[HORA DE INGRESO TARDE]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="COLUMNA_NORMAL" x="594" y="1" width="100" height="25" uuid="02afc5f1-ac6e-4350-93f7-ea3e8d8c4612"/>
+				<textElement verticalAlignment="Middle">
+					<font size="9" isBold="true"/>
+				</textElement>
+				<text><![CDATA[HORA DE SALIDA TARDE]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="COLUMNA_NORMAL" x="705" y="1" width="100" height="25" uuid="d1d1e8a2-84c6-44d1-a973-3f875a821e41"/>
+				<textElement verticalAlignment="Middle">
+					<font size="9" isBold="true"/>
+				</textElement>
+				<text><![CDATA[HORA DE INGRESO NOCHE]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="COLUMNA_NORMAL" x="815" y="1" width="100" height="25" uuid="b2eaac75-9e41-4e4c-9439-4c1e7720d925"/>
+				<textElement verticalAlignment="Middle">
+					<font size="9" isBold="true"/>
+				</textElement>
+				<text><![CDATA[HORA DE SALIDA NOCHE]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="24" splitType="Stretch">
+			<rectangle>
+				<reportElement stretchType="RelativeToBandHeight" x="0" y="1" width="924" height="20" backcolor="#DEDADA" uuid="5d27d6a7-9316-4e52-b646-da43dbf19fb5">
+					<printWhenExpression><![CDATA[new Boolean($V{REPORT_COUNT}.intValue() % 2 == 0)]]></printWhenExpression>
+				</reportElement>
+			</rectangle>
+			<textField isBlankWhenNull="true">
+				<reportElement style="COLUMNA_NORMAL" x="1" y="0" width="130" height="20" uuid="d33e9efe-6c50-48ff-b8ed-54655a7f2cdd"/>
+				<textFieldExpression><![CDATA[$F{apellidos}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement style="COLUMNA_NORMAL" x="132" y="0" width="130" height="20" uuid="a00d9ea8-e99a-4b8b-a692-ff6c079a530f"/>
+				<textFieldExpression><![CDATA[$F{nombres}]]></textFieldExpression>
+			</textField>
+			<textField pattern="dd-MM-yyyy h:mm a" isBlankWhenNull="true">
+				<reportElement style="COLUMNA_NORMAL" x="263" y="0" width="110" height="20" uuid="9d76bca2-acd5-41d6-af34-a5c867f2b3db"/>
+				<textFieldExpression><![CDATA[$F{horaim}]]></textFieldExpression>
+			</textField>
+			<textField pattern="dd-MM-yyyy h:mm a" isBlankWhenNull="true">
+				<reportElement style="COLUMNA_NORMAL" x="373" y="0" width="110" height="20" uuid="8096b115-bcd0-43cc-8fe9-52c6f2c8aaab"/>
+				<textFieldExpression><![CDATA[$F{horasm}]]></textFieldExpression>
+			</textField>
+			<textField pattern="dd-MM-yyyy h:mm a" isBlankWhenNull="true">
+				<reportElement style="COLUMNA_NORMAL" x="813" y="0" width="110" height="20" uuid="ac284a81-b78a-490c-99d5-cf683c3b263d"/>
+				<textFieldExpression><![CDATA[$F{horasn}]]></textFieldExpression>
+			</textField>
+			<textField pattern="dd-MM-yyyy h:mm a" isBlankWhenNull="true">
+				<reportElement style="COLUMNA_NORMAL" x="702" y="0" width="110" height="20" uuid="3d71583c-14d4-4afd-b32e-7172476493f1"/>
+				<textFieldExpression><![CDATA[$F{horain}]]></textFieldExpression>
+			</textField>
+			<textField pattern="dd-MM-yyyy h:mm a" isBlankWhenNull="true">
+				<reportElement style="COLUMNA_NORMAL" x="483" y="0" width="110" height="20" uuid="89e8fa94-9052-4575-8bd0-6c98d1c60d70"/>
+				<textFieldExpression><![CDATA[$F{horait}]]></textFieldExpression>
+			</textField>
+			<textField pattern="dd-MM-yyyy h:mm a" isBlankWhenNull="true">
+				<reportElement style="COLUMNA_NORMAL" x="592" y="0" width="110" height="20" uuid="3a967f65-da2b-4c20-b868-66151ac61e1a"/>
+				<textFieldExpression><![CDATA[$F{horast}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="6" splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="22" splitType="Stretch">
+			<textField pattern="dd/MM/yyyy">
+				<reportElement style="COLUMNA_NORMAL" x="0" y="0" width="138" height="20" uuid="1956ab33-84e1-46a6-acac-b38bcfb283f1"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="COLUMNA_NORMAL" x="793" y="0" width="131" height="20" uuid="adfd9fa6-7145-454e-8dcc-0c3bae317162"/>
+				<textElement textAlignment="Right"/>
+				<textFieldExpression><![CDATA["Página Nº:"+$V{PAGE_NUMBER}+" de "+$V{PAGE_COUNT}]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageFooter>
+	<summary>
+		<band height="5" splitType="Stretch"/>
+	</summary>
+</jasperReport>
